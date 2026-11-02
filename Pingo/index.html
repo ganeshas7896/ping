@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#E8B23A">
+<title>Ping</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="phone">
+
+  <!-- AUTH -->
+  <section id="auth" class="screen active">
+    <div class="hero"><i class="ring r1"></i><i class="ring r2"></i><i class="ring r3"></i><div class="logo">Ping</div></div>
+    <div class="seg"><button id="m-login" class="on">Sign in</button><button id="m-signup">Sign up</button><span class="knob"></span></div>
+    <form id="af" autocomplete="on">
+      <input id="u" placeholder="Choose a username" autocapitalize="none" maxlength="20" hidden>
+      <input id="e" placeholder="Email or username" autocapitalize="none" required>
+      <div class="password-wrap"><input id="p" type="password" placeholder="Password" required minlength="8" autocomplete="current-password"><button type="button" class="password-toggle" id="toggle-password" aria-label="Show password" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"></path><circle cx="12" cy="12" r="3"></circle></svg></button></div>
+      <small id="password-help" class="mute" hidden>At least 8 characters, with a letter, a number, and a special character.</small>
+      <button id="go" class="btn" type="submit"><span>Sign in</span></button>
+    </form>
+    <div id="g"></div>
+  </section>
+
+  <!-- HOME -->
+  <section id="home" class="screen">
+    <header class="bar"><h1>Ping</h1><div class="bar-actions"><button class="ic" id="theme" title="Dark / light">◐</button><button id="logout" class="logout-btn" title="Sign out">Logout</button></div></header>
+    <main>
+      <div class="tab on" id="t-chats"></div>
+      <div class="tab" id="t-req"></div>
+      <div class="tab" id="t-add">
+        <h2>Add a friend</h2>
+        <p class="mute">Type their exact username. They'll get a request to accept.</p>
+        <div class="row"><span class="at">@</span><input id="fu" placeholder="username" autocapitalize="none"></div>
+        <button class="btn" id="fgo"><span>Send request</span></button>
+        <h2 class="blocked-heading">Blocked users</h2>
+        <div id="blocked-list"></div>
+      </div>
+    </main>
+    <nav class="nav">
+      <button data-t="chats" class="on">Chats<b id="b-chats" class="badge" hidden></b></button>
+      <button data-t="req">Requests<b id="b-req" class="badge" hidden></b></button>
+      <button data-t="add">Add</button>
+    </nav>
+  </section>
+
+  <!-- CHAT -->
+  <section id="chat" class="screen">
+    <header class="bar"><button class="ic" id="back">‹</button><div class="av" id="cav"></div><h1 id="cname"></h1><button class="block-user" id="block-user" title="Block this user">Block</button></header>
+    <div id="msgs"></div>
+    <div id="composer">
+      <div id="recbar">
+        <button class="ic" id="rcancel" title="Discard voice note">✕</button>
+        <i class="dot" id="rec-dot"></i><span id="clock">0:00</span><span class="mute" id="rec-status">Recording…</span>
+        <button class="rec-control" id="rstop" type="button">Stop</button>
+        <button class="rec-control" id="rplay" type="button" hidden>▶ Preview</button>
+        <label class="voice-once"><input type="checkbox" id="voice-once"><span>Once</span></label>
+        <button class="rec-control send-recording" id="rsend" type="button" hidden>Send</button>
+      </div>
+      <label class="ic" id="attach" title="Send photo">📷<input id="file" type="file" accept="image/*" hidden></label>
+      <button class="ic emoji-toggle" id="emoji-toggle" type="button" title="Choose emoji" aria-label="Choose emoji" aria-expanded="false">☺</button>
+      <input id="txt" placeholder="Message" autocomplete="off" maxlength="2000">
+      <button id="act" class="act mic" title="Send"><span class="g-mic">🎤</span><span class="g-send">➤</span></button>
+      <div id="emoji-picker" role="dialog" aria-label="Choose an emoji" hidden></div>
+    </div>
+  </section>
+
+  <!-- PHOTO SEND SHEET -->
+  <div id="sheet"><div class="card">
+    <img id="pimg" alt="">
+    <label class="tog"><input type="checkbox" id="once" checked><span class="sw"></span><span>View once <small class="mute">disappears after they open it</small></span></label>
+    <div class="row2"><button class="btn ghost" id="pno"><span>Cancel</span></button><button class="btn" id="pyes"><span>Send photo</span></button></div>
+  </div></div>
+
+  <!-- VIEW-ONCE VIEWER -->
+  <div id="viewer"><img id="vimg" alt=""><audio id="vaudio" controls></audio><p id="viewer-caption">One-time media · it's gone when you close this</p><button class="btn" id="vclose"><span>Close</span></button></div>
+
+  <div id="toast"></div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
